@@ -1,6 +1,7 @@
 # Cloud Deployment Guide
 
 Path: local Docker → same Compose stack on EC2 → expose with API Gateway.
+
 ---
 
 ## 1. Prepare EC2
@@ -8,7 +9,7 @@ Path: local Docker → same Compose stack on EC2 → expose with API Gateway.
 EC2 console → Launch instance:
 
 - AMI choose : Ubuntu 22.04 LTS
-- Type: t3.samll (2 vCPU / 4 GB)
+- Type: t3.small (2 vCPU / 4 GB)
 - Storage: 8 GB
 - Key pair: keep the downloaded `.pem`
 
