@@ -1,16 +1,6 @@
 # Cloud Deployment Guide
 
 Path: local Docker → same Compose stack on EC2 → expose with API Gateway.
-
-```
-[Local: Docker Compose] ──rsync──▶ [EC2: Docker Compose]
-                                            │
-                                            ▼
-                                       [Nginx :80]
-                                            ▲
-[Public HTTPS] ──▶ [API Gateway: /prod/*] ──┘
-```
-
 ---
 
 ## 1. Prepare EC2
