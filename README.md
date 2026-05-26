@@ -102,7 +102,13 @@ curl -sS -I http://127.0.0.1:5173 | head -1
 
 ## 5. Nginx to strip `/prod`
 
-`/etc/nginx/sites-available/pii-api`:
+Create a new Nginx site config on EC2:
+
+```bash
+sudo nano /etc/nginx/sites-available/pii-api
+```
+
+Paste the following content into the file, then save and exit (`Ctrl+X`):
 
 ```nginx
 server {
@@ -117,7 +123,7 @@ server {
 }
 ```
 
-Enable it:
+Enable the site and reload Nginx:
 
 ```bash
 sudo ln -sf /etc/nginx/sites-available/pii-api /etc/nginx/sites-enabled/pii-api
@@ -125,7 +131,7 @@ sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-FastAPI routes are `/health`, `/detect_spans`, etc. — not `/prod/...`. Nginx strips the `/prod` prefix before forwarding.
+FastAPI routes are `/health`, `/detect_spans`, etc. — not `/prod/...`. Nginx strips the `/prod` prefix before forwarding to the API container on port 8000.
 
 ---
 
